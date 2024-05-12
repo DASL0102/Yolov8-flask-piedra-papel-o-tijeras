@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, Papel, Tijera</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .player-choice, .computer-choice {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+        }
+        .image1 {
+            max-width: 200px;
+            height: auto;
+        }
+        #game-history {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="player-choice">
+            <h2>Tu elección:</h2>
+            <p>{{ player_choice }}</p>
+            {% if player_choice == 0 %}
+            <img id="playerChoice" class="image1" src="static/assets/piedra.png">
+            {% elif player_choice == 1 %}
+            <img id="playerChoice" class="image1" src="static/assets/papel.png">
+            {% elif player_choice == 2 %}
+            <img id="playerChoice" class="image1" src="static/assets/tijera.png">
+            {% else %}
+            <img id="playerChoice" class="image1" src="">
+            {% endif %}
+        </div>
+        <div class="computer-choice">
+            <h2>Elección de la PC:</h2>
+            <p>{{ computer_choice }}</p>
+            {% if computer_choice == 0 %}
+            <img id="aiChoice" class="image1" src="static/assets/piedra.png">
+            {% elif computer_choice == 1 %}
+            <img id="aiChoice" class="image1" src="static/assets/papel.png">
+            {% elif computer_choice == 2 %}
+            <img id="aiChoice" class="image1" src="static/assets/tijera.png">
+            {% else %}
+            <img id="aiChoice" class="image1" src="">
+            {% endif %}
+        </div>
+    </div>
+    <div id="game-history">
+        <h2>Historial del juego:</h2>
+        <ul id="history-list"></ul>
+    </div>
+
+    <!-- Resto del código JavaScript -->
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/index.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function stop(){
+        $("#ciao").attr("src", "/static/1.png");
+        $("#stop").attr("class","btn btn-danger active");
+        $("#start").attr("class","btn btn-outline-success");
+    }
+    function start(){
+        $("#ciao").attr("src", "{{url_for('video')}}");
+        $("#start").attr("class","btn btn-success active");
+        $("#stop").attr("class","btn btn-outline-danger");
+    }
+  </script>
+
+</head>
+<body>
+  <div class="">
+    <button id="start" onclick="start()" class="btn btn-outline-success"><i class="fa fa-video-camera"></i> start</button>
+    <button id="stop" onclick="stop()" class="btn btn-danger active"><i class="fa fa-stop"></i> Stop</button> 
+  </div>
+  <img id="ciao" class="image1" src="/static/1.png">
+</body>
+</html>

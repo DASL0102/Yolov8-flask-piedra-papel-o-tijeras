@@ -1,0 +1,49 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/index.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    var intervalId;
+
+    function start() {
+      $("#ciao").attr("src", "{{ url_for('video') }}");
+      $("#start").attr("class", "btn btn-success active");
+      $("#stop").attr("class", "btn btn-outline-danger");
+
+      // Iniciar el intervalo para verificar si han pasado 8 segundos
+      intervalId = setInterval(function() {
+        var timerElapsed = (new Date().getTime() - startTime) / 1000;
+        if (timerElapsed >= 8) {
+          stop();
+          // Redirigir a la ruta "showJugada"
+          window.location.href = "{{ url_for('showJugada') }}";
+        }
+      }, 100);
+
+      // Guardar el tiempo de inicio
+      startTime = new Date().getTime();
+    }
+
+    function stop() {
+      // Detener el intervalo
+      clearInterval(intervalId);
+
+      $("#ciao").attr("src", "static/assets/ready.jpg");
+      $("#stop").attr("class", "btn btn-danger active");
+      $("#start").attr("class", "btn btn-outline-success");
+    }
+  </script>
+</head>
+<body>
+  <div class="">
+    <!--<button id="start" onclick="start()" class="btn btn-outline-success"><i class="fa fa-video-camera"></i> jugar</button>-->
+    <button id="start" onclick="start()" class="btn btn-success"><i class="fa fa-video-camera"></i> jugar</button>
+    
+  </div>
+  <img id="ciao" class="image1" src="static/assets/ready.jpg">
+</body>
+</html>
